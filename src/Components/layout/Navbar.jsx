@@ -1,9 +1,22 @@
-import React from 'react'
+import React from 'react';
+import { AppBar,Toolbar,styled} from '@mui/material';
+
 const Navbar=()=>{
     return(
         <div>
-            <h1>Hello from navbar </h1>
+           <AppBar>
+              <Toolbar>
+
+              </Toolbar>
+           </AppBar>           
         </div>
     )
 }
 export default Navbar;
+
+
+
+/**
+ * AppBar will give you a header with a default color 
+ *
+ */
