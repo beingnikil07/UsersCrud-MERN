@@ -5,10 +5,14 @@ const Header = styled(AppBar)`     // AppBar ko styled kiya hai to hum isko avv 
     background:#111111;
 `;
 const Tabs = styled(NavLink)`    //Don't wrap NavLink into quotation like 'NavLink'
-     font-size:20px;
+     font-size:18px;
      margin-right:20px;
      color:inherit;
+     font-family:'poppins','sans-serif';
      text-decoration:none;
+     &:hover{                      //adding hovering effect
+        color:red;   
+     }
 `;
 
 const Navbar = () => {
