@@ -1,5 +1,6 @@
 import { FormControl, FormGroup, Input, InputLabel, Typography, styled, Button } from '@mui/material';
-import React from 'react'
+import { React, useState } from 'react'
+
 
 const Container = styled(FormGroup)`
     width:50%;
@@ -24,24 +25,40 @@ const Container = styled(FormGroup)`
 `;
 
 const AddUser = () => {
+    const defaultUser = {
+        name: "",
+        username: "",
+        email: "",
+        phone: ""
+    }
+    const [user, setUser] = useState(defaultUser);
+    const onValueChange = (e) => {
+        //console.log(e.target.name,e.target.value);    
+        // setUser({...user,e.target.name:e.target.value}); Don't write like this becz we all know that object
+        //is a pair of key and value .Whenever key and value are same we have write key in a square bracket 
+        setUser({ ...user, [e.target.name]: e.target.value })
+        //spread ...user isliye kiya agar nhi lagate to ye override krr deta, if you wanna try what happens when we not gives spread operator
+        // just remove ...user and print console.log(user) to show the effect on console live
+        //console.log(user);   // yes ,working perfectly
+    }
     return (
         <Container>
             <Typography variant='h4'>Add User</Typography>
             <FormControl>
                 <InputLabel>Name</InputLabel>
-                <Input />
+                <Input onChange={(e) => { onValueChange(e) }} name="name" />
             </FormControl>
             <FormControl>
                 <InputLabel>Username</InputLabel>
-                <Input />
+                <Input onChange={(e) => { onValueChange(e) }} name="username" />
             </FormControl>
             <FormControl>
                 <InputLabel>Email</InputLabel>
-                <Input />
+                <Input onChange={(e) => { onValueChange(e) }} name="email" />
             </FormControl>
             <FormControl>
                 <InputLabel>Phone</InputLabel>
-                <Input />
+                <Input onChange={(e) => { onValueChange(e) }} name="phone" />
             </FormControl>
             <Button color='secondary' variant="contained">Add User</Button>
         </Container>
@@ -49,10 +66,4 @@ const AddUser = () => {
 }
 export default AddUser;
 
-/**
- * Actual mai ye formcontrol jo hai ye ek div he hai , kaise pta kre ye div hai to simple
- * aap browser mai inspect karke dekh lo 
- * Hum parent mean container se he uske childs ko access krr sakte hai &>div kuch aaise karke
- * Ya aap child ko alag properties lga lo it's totally up to you
- * Avv typography bhi ek h4 tag he hai insect mai dekh lo 
- */
+
