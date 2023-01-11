@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = "";
+const URL = "http://localhost:5000";  //Avv meri sabhi api iss url prr aakar hit hongi
 const addUser = async (data) => {
     try {
 
@@ -11,10 +11,3 @@ const addUser = async (data) => {
 }
 export default addUser;
 
-/* Notes
-/* Jav kabhi bhi api call karte hai to async/await ka use isliye karte hai kyuki api call
- *  ek asynchronous call hoti hai isliye hum async/await lga krr handle karte hai request ko 
- * 
- * Aur ye api component isliye banaya jisse api ko seprate rakh sake,abhi mai backend banaunga 
- * then i will write url.
- */

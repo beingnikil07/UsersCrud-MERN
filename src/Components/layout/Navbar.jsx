@@ -1,16 +1,16 @@
 import React from 'react';
 import { AppBar, Toolbar, styled } from '@mui/material';
 import { NavLink } from 'react-router-dom';
-const Header = styled(AppBar)`     // AppBar ko styled kiya hai to hum isko avv svv jagah Header ke naam se janenge.
+const Header = styled(AppBar)`     
     background:#111111;
 `;
-const Tabs = styled(NavLink)`    //Don't wrap NavLink into quotation like 'NavLink'
+const Tabs = styled(NavLink)`   
      font-size:18px;
      margin-right:20px;
      color:inherit;
      font-family:'poppins','sans-serif';
      text-decoration:none;
-     &:hover{                      //adding hovering effect
+     &:hover{                      
         color:red;   
      }
 `;

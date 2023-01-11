@@ -1,10 +1,11 @@
-//It is a new method defined in ES6 and you can also use require method to import express
-//Ye line work kre iske liye aapko pehle package.json file mai "type":"module" set karna padega  
-import express from "express"; 
+  import express from "express"; 
 
-const app=express();  //Initializing 
+  import Connection from "./database/db.js";
+
+const app=express();  
 const PORT=5000;
 
+Connection();
 app.listen(PORT,()=>{
     console.log(`server running at ${PORT}`);
 });
