@@ -11,15 +11,12 @@ const userSchema = mongoose.Schema({
 autoIncrement.initialize(mongoose.connection); // initializing and connecting to mongoose
 userSchema.plugin(autoIncrement.plugin, "user"); //use user as a plugin
 
-const user = mongoose.model("user", "userSchema");
+const user = mongoose.model("user", userSchema);
 // model() method of mongoose takes two argv ,first one is collection name of database ,if in your database the collection of given
 //first argv is existed then mongoose does not create collection otherwise i will create collection
 //second argv is the  our schema
 
 export default user;
-
-
-
 
 /**************************************************NOTES***************************************************/
 
