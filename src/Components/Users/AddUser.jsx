@@ -1,7 +1,6 @@
 import { FormControl, FormGroup, Input, InputLabel, Typography, styled, Button } from '@mui/material';
 import { React, useState } from 'react'
-
-
+import { addUser } from '../Services/api';
 const Container = styled(FormGroup)`
     width:50%;
     font-family: 'Poppins', sans-serif;
@@ -42,6 +41,12 @@ const AddUser = () => {
         // just remove ...user and print console.log(user) to show the effect on console live
         //console.log(user);   // yes ,working perfectly
     }
+
+    //Isme hum api api call karayenge mean jaise he user button prr click karega to api hit hogi ek 
+    //Avv api jo hai wo async hai to aapko iss function ko bhi async banana padega 
+    const addUserDetails = async () => {
+        await addUser(user);   //passing user as data to api and api accept it as data
+    }
     return (
         <Container>
             <Typography variant='h4'>Add User</Typography>
@@ -61,7 +66,7 @@ const AddUser = () => {
                 <InputLabel>Phone</InputLabel>
                 <Input onChange={(e) => { onValueChange(e) }} name="phone" />
             </FormControl>
-            <Button color='secondary' variant="contained">Add User</Button>
+            <Button color='secondary' variant="contained" onClick={addUserDetails}>Add User</Button>
         </Container>
     )
 }

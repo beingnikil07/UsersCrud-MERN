@@ -22,7 +22,7 @@ const Navbar = () => {
                 <Toolbar>
                     <Tabs to="/" >Users</Tabs>
                     <Tabs to="/" >Home</Tabs>
-                    <Tabs to="/users/add" >Add User</Tabs>
+                    <Tabs to="add" >Add User</Tabs>
                     <Tabs to="/contact" >Contact</Tabs>
                     <Tabs to="/about" >About</Tabs>
                 </Toolbar>
