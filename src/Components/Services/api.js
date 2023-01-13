@@ -20,6 +20,15 @@ export const getUsers=async()=>{
     }
 };
 
+//for edit a user 
+export const getUser=async(id)=>{
+  try {
+    return await axios.get(`${URL}/${id}`);
+  } catch (error) {
+    console.log("Error while calling edit user api",error);
+  }
+};
+
 
 
 

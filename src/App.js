@@ -5,6 +5,7 @@ import Contact from './Components/Pages/Contact';
 import Home from './Components/Pages/Home';
 import AboutMe from './Components/Pages/AboutMe';
 import NotFound from './Components/Pages/NotFound';
+import EditUser from './Components/Users/EditUser';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route exact path='/about' element={<AboutMe />}></Route>
           <Route exact path='/add' element={<AddUser />}></Route>
           <Route exact path='/*' element={<NotFound />}></Route>
+          <Route exact path='/edit/:id' element={<EditUser />}></Route>
         </Routes>
       </Router>
 

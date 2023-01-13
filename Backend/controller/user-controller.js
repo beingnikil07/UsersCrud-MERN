@@ -21,9 +21,21 @@ export const getUsers = async (req, res) => {
     const users = await User.find({});
     res.status(200).json(users);
   } catch (error) {
-    res.status(404).res({ message: error.message });
+    res.status(404).json({ message: error.message });
   }
 };
+
+
+//for get only a particular user data 
+export const getUser = async (req, res) => {
+  console.log(req.params.id);
+  try {
+    const user = await User.findById(req.params.id);   //this will give the coresponding user id data 
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+}
 
 
 

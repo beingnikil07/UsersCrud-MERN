@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import { React, useEffect, useState } from "react";
 import { getUsers } from "../Services/api.js";
+import { Link } from "react-router-dom";
 
 //Adding css 
 const StyledTable = styled(Table)`
@@ -61,8 +62,9 @@ const Home = () => {
             <TableCell>{user.email}</TableCell>
             <TableCell>{user.phone}</TableCell>
             <TableCell>
-            <Button variant="contained" style={{marginRight:10}}>Edit</Button>
-            <Button variant="contained" color="secondary">Delete</Button>
+              <Button variant="contained" style={{ marginRight: 10 }} component={Link} to={`/edit/${user._id}`}>Edit</Button>
+              {/*Routing hum button ke sath nii krr sakte isliye humne component={Link } likh krr isko humne router component bna diya */}
+              <Button variant="contained" color="secondary">Delete</Button>
             </TableCell>
           </TableRow>
         ))}
