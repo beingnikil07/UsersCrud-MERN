@@ -36,9 +36,9 @@ const Home = () => {
     setUsers(result.data);
   };
 
-  const deleteUserDetails = async (id) => {   //ye id wha se aa rhi hai jha maine call kiya tha isko
-    await deleteUser(id);   //calling deleteUser api
-    getAllUsers(); //delete hua refresh karne ke baad na dikhe isliye hum delete hote he sabhi ko dobara hatho hath get krr lenge 
+  const deleteUserDetails = async (id) => {
+    await deleteUser(id);
+    getAllUsers();
   }
 
   return (
@@ -50,7 +50,7 @@ const Home = () => {
           <TableCell>User Name</TableCell>
           <TableCell>Email</TableCell>
           <TableCell>Phone</TableCell>
-          <TableCell></TableCell>    {/*Extra banayi kyuki ye jo extra space banegi idhar mai apne button rakhunga edit & delete */}
+          <TableCell></TableCell>
         </THead>
       </TableHead>
       <TableBody>
@@ -63,7 +63,7 @@ const Home = () => {
             <TableCell>{user.phone}</TableCell>
             <TableCell>
               <Button variant="contained" style={{ marginRight: 10 }} component={Link} to={`/edit/${user._id}`}>Edit</Button>
-              {/*Routing hum button ke sath nii krr sakte isliye humne component={Link } likh krr isko humne router component bna diya */}
+
               <Button variant="contained" color="secondary" onClick={() => deleteUserDetails(user._id)}>Delete</Button>
             </TableCell>
           </TableRow>

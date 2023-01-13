@@ -34,7 +34,3 @@ export default Navbar;
 
 
 
-/**
- * AppBar will give you a header with a default color 
- *
- */

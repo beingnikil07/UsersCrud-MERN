@@ -33,7 +33,7 @@ const Container = styled(FormGroup)`
 `;
 
 const EditUser = () => {
-  const { id } = useParams(); //useParams ek object hota hai jisko destructure karke hum id nikal sakte hai URL se
+  const { id } = useParams(); 
   const navigate = useNavigate();
 
   const defaultUser = {
@@ -57,7 +57,7 @@ const EditUser = () => {
   };
 
   const EditUserDetails = async () => {
-    await editUser(user,id);    //calling Api,user ke sath sath hum id ko bhi denge jisse pta chal paaye kis user ka data change krr rhe ho 
+    await editUser(user,id);   
     navigate("/");
   };
   return (

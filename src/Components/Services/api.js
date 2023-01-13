@@ -20,8 +20,8 @@ export const getUsers = async () => {
   }
 };
 
-//for edit a user 
-//Ye pehle wala function to ek user ke data ko dega jisko edit karna hai api ke through 
+//for get only one particular user 
+
 export const getUser = async (id) => {
   try {
     return await axios.get(`${URL}/${id}`);
@@ -30,21 +30,16 @@ export const getUser = async (id) => {
   }
 };
 
-//avv edit mai data aa gya to data ko edit karne ke baad wo svv changes humko dobara database mai purane wale se replace karne padenge
-
+//for edit a user
 export const editUser = async (user, id) => {
   try {
-    //ye ek post api to hum body send krr sakte hai isliye maine user ko send kiya 
     return await axios.put(`${URL}/${id}`, user);
-
   } catch (error) {
     console.log("Error while calling edit user api", error);
   }
 }
 
-
 // api for delete a user 
-// id is receiving from api calling function that is present inside home component
 export const deleteUser = async (id) => {
   try {
     return await axios.delete(`${URL}/${id}`);

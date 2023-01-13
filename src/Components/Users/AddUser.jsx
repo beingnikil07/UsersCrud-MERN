@@ -44,19 +44,12 @@ const AddUser = () => {
   const navigate = useNavigate();
 
   const onValueChange = (e) => {
-    //console.log(e.target.name,e.target.value);
-    // setUser({...user,e.target.name:e.target.value}); Don't write like this becz we all know that object
-    //is a pair of key and value .Whenever key and value are same we have write key in a square bracket
     setUser({ ...user, [e.target.name]: e.target.value });
-    //spread ...user isliye kiya agar nhi lagate to ye override krr deta, if you wanna try what happens when we not gives spread operator
-    // just remove ...user and print console.log(user) to show the effect on console live
-    //console.log(user);   // yes ,working perfectly
+
   };
 
-  //Isme hum api api call karayenge mean jaise he user button prr click karega to api hit hogi ek
-  //Avv api jo hai wo async hai to aapko iss function ko bhi async banana padega
   const addUserDetails = async () => {
-    await addUser(user); //passing user as data to api and api accept it as data
+    await addUser(user);
     navigate("/");
   };
   return (
