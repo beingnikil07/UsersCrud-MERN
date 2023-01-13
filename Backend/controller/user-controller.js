@@ -35,6 +35,20 @@ export const getUser = async (req, res) => {
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
+};
+
+//for edit a user 
+
+export const editUser = async (req, res) => {
+  const user = req.body;  //get the data from api
+  const editUser = new User(user); //it checks in schema whether user is valid or not
+  //aur imp note avv editUser ke pass hamara schema hai  
+  try {
+    await User.updateOne({ _id: req.params.id }, user);
+    res.status(200).json(editUser);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
 }
 
 

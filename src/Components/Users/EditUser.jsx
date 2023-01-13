@@ -8,7 +8,7 @@ import {
   Button,
 } from "@mui/material";
 import { React, useEffect, useState } from "react";
-import { addUser, getUser } from "../Services/api";
+import { editUser, getUser } from "../Services/api";
 import { useNavigate, useParams } from "react-router";
 const Container = styled(FormGroup)`
   width: 50%;
@@ -34,14 +34,7 @@ const Container = styled(FormGroup)`
 
 const EditUser = () => {
   const { id } = useParams(); //useParams ek object hota hai jisko destructure karke hum id nikal sakte hai URL se
-
-  useEffect(() => {
-    loadUserDetails();
-  }, []);
-
-  const loadUserDetails = async () => {
-    const result = await getUser(id);
-  };
+  const navigate = useNavigate();
 
   const defaultUser = {
     name: "",
@@ -50,14 +43,21 @@ const EditUser = () => {
     phone: "",
   };
   const [user, setUser] = useState(defaultUser);
-  const navigate = useNavigate();
+  useEffect(() => {
+    loadUserDetails();
+  }, []);
+
+  const loadUserDetails = async () => {
+    const result = await getUser(id);
+    setUser(result.data);
+  };
 
   const onValueChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  const addUserDetails = async () => {
-    await addUser(user);
+  const EditUserDetails = async () => {
+    await editUser(user,id);    //calling Api,user ke sath sath hum id ko bhi denge jisse pta chal paaye kis user ka data change krr rhe ho 
     navigate("/");
   };
   return (
@@ -70,6 +70,7 @@ const EditUser = () => {
             onValueChange(e);
           }}
           name="name"
+          value={user.name}
         />
       </FormControl>
       <FormControl>
@@ -79,6 +80,7 @@ const EditUser = () => {
             onValueChange(e);
           }}
           name="username"
+          value={user.username}
         />
       </FormControl>
       <FormControl>
@@ -88,6 +90,7 @@ const EditUser = () => {
             onValueChange(e);
           }}
           name="email"
+          value={user.email}
         />
       </FormControl>
       <FormControl>
@@ -97,10 +100,11 @@ const EditUser = () => {
             onValueChange(e);
           }}
           name="phone"
+          value={user.phone}
         />
       </FormControl>
-      <Button color="secondary" variant="contained" onClick={addUserDetails}>
-        Add User
+      <Button color="warning" variant="contained" onClick={EditUserDetails}>
+        Update User
       </Button>
     </Container>
   );
