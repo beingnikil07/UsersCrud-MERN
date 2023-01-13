@@ -4,9 +4,24 @@ import {
   TableCell,
   TableHead,
   TableRow,
+  styled
 } from "@mui/material";
 import { React, useEffect, useState } from "react";
 import { getUsers } from "../Services/api.js";
+
+//Adding css 
+const StyledTable = styled(Table)`
+      width:80%;
+      margin:50px auto 0px auto;
+`;
+const THead = styled(TableRow)`
+  background:black;
+  &>th{
+    color:white;
+    font-size:17px;
+  }
+`;
+
 const Home = () => {
   const [users, setUsers] = useState([]);
   //initail value ek array dii kyuki api ka data ek array ke format mai aaya hai
@@ -22,16 +37,18 @@ const Home = () => {
     // setting all data in state
     setUsers(result.data);
   };
+
+
   return (
-    <Table>
+    <StyledTable>
       <TableHead>
-        <TableRow>
+        <THead>
           <TableCell>Id</TableCell>
           <TableCell>Name</TableCell>
           <TableCell>User Name</TableCell>
           <TableCell>Email</TableCell>
           <TableCell>Phone</TableCell>
-        </TableRow>
+        </THead>
       </TableHead>
       <TableBody>
         {users.map((user) => (
@@ -44,7 +61,7 @@ const Home = () => {
           </TableRow>
         ))}
       </TableBody>
-    </Table>
+    </StyledTable>
   );
 };
 export default Home;
