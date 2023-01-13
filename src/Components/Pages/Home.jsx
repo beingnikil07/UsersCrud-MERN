@@ -23,6 +23,9 @@ const THead = styled(TableRow)`
     font-size:17px;
   }
 `;
+const TABLECELL = styled(TableCell)`
+    font-size:17px;
+`
 
 const Home = () => {
   const [users, setUsers] = useState([]);
@@ -56,16 +59,16 @@ const Home = () => {
       <TableBody>
         {users.map((user) => (
           <TableRow>
-            <TableCell>{user._id}</TableCell>
-            <TableCell>{user.name}</TableCell>
-            <TableCell>{user.username}</TableCell>
-            <TableCell>{user.email}</TableCell>
-            <TableCell>{user.phone}</TableCell>
-            <TableCell>
+            <TABLECELL>{user._id}</TABLECELL>
+            <TABLECELL>{user.name}</TABLECELL>
+            <TABLECELL>{user.username}</TABLECELL>
+            <TABLECELL>{user.email}</TABLECELL>
+            <TABLECELL>{user.phone}</TABLECELL>
+            <TABLECELL>
               <Button variant="contained" style={{ marginRight: 10 }} component={Link} to={`/edit/${user._id}`}>Edit</Button>
 
               <Button variant="contained" color="secondary" onClick={() => deleteUserDetails(user._id)}>Delete</Button>
-            </TableCell>
+            </TABLECELL>
           </TableRow>
         ))}
       </TableBody>
