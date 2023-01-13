@@ -1,14 +1,47 @@
-import axios from 'axios';
+import axios from "axios";
 
-const URL = "http://localhost:5000";  
+//For add a user
+const URL = "http://localhost:5000";
+
 export const addUser = async (data) => {
-    try {
+  try {
+    return await axios.post(`${URL}/add`, data);
+  } catch (error) {
+    console.log("Error while calling add User api", error);
+  }
+};
 
-        return await axios.post(`${URL}/add`, data);
-        //Avv meri sabhi api iss url prr aakar hit hongi ,yha prr hum post api ko call krr rhe hai 
-    } catch (error) {
-        console.log('Error while calling add User api', error);
+// For get the user 
+export const getUsers=async()=>{
+    try{
+        return await axios.get(`${URL}`);
+    }catch(error){
+        console.log("Error while calling get user api ",error);
     }
-}
+};
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***********************************NOTES******************************************/
+/*  we are using try and catch because our data put on the cloud .  
+*/
