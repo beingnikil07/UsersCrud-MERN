@@ -11,7 +11,7 @@ export const addUser = async (data) => {
   }
 };
 
-// For get the user 
+// For get all user 
 export const getUsers = async () => {
   try {
     return await axios.get(`${URL}`);
@@ -35,10 +35,21 @@ export const getUser = async (id) => {
 export const editUser = async (user, id) => {
   try {
     //ye ek post api to hum body send krr sakte hai isliye maine user ko send kiya 
-    return await axios.post(`${URL}/${id}`, user);
+    return await axios.put(`${URL}/${id}`, user);
 
   } catch (error) {
     console.log("Error while calling edit user api", error);
+  }
+}
+
+
+// api for delete a user 
+// id is receiving from api calling function that is present inside home component
+export const deleteUser = async (id) => {
+  try {
+    return await axios.delete(`${URL}/${id}`);
+  } catch (error) {
+    console.log("Error while calling delete api ", error);
   }
 }
 
@@ -62,8 +73,3 @@ export const editUser = async (user, id) => {
 
 
 
-
-
-/***********************************NOTES******************************************/
-/*  we are using try and catch because our data put on the cloud .  
-*/

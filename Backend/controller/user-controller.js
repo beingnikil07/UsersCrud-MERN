@@ -38,7 +38,6 @@ export const getUser = async (req, res) => {
 };
 
 //for edit a user 
-
 export const editUser = async (req, res) => {
   const user = req.body;  //get the data from api
   const editUser = new User(user); //it checks in schema whether user is valid or not
@@ -47,11 +46,21 @@ export const editUser = async (req, res) => {
     await User.updateOne({ _id: req.params.id }, user);
     res.status(200).json(editUser);
   } catch (error) {
-    res.status(404).json({ message: error.message });
+    res.status(409).json({ message: error.message });
   }
 }
 
 
+//for delete a user 
+export const deleteUser = async (req, res) => {
+  try {
+    await User.deleteOne({ _id: req.params.id });
+    res.status(200).json({ message: "User deleted successfully" });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+
+}
 
 
 

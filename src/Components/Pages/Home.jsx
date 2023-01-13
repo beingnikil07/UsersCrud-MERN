@@ -8,7 +8,7 @@ import {
   Button
 } from "@mui/material";
 import { React, useEffect, useState } from "react";
-import { getUsers } from "../Services/api.js";
+import { getUsers, deleteUser } from "../Services/api.js";
 import { Link } from "react-router-dom";
 
 //Adding css 
@@ -26,20 +26,20 @@ const THead = styled(TableRow)`
 
 const Home = () => {
   const [users, setUsers] = useState([]);
-  //initail value ek array dii kyuki api ka data ek array ke format mai aaya hai
+
   useEffect(() => {
     getAllUsers();
   }, []);
 
-  //recieving data from api
   const getAllUsers = async () => {
-    //storing api data in a variable
     let result = await getUsers();
-    //console.log(result.data);
-    // setting all data in state
     setUsers(result.data);
   };
 
+  const deleteUserDetails = async (id) => {   //ye id wha se aa rhi hai jha maine call kiya tha isko
+    await deleteUser(id);   //calling deleteUser api
+    getAllUsers(); //delete hua refresh karne ke baad na dikhe isliye hum delete hote he sabhi ko dobara hatho hath get krr lenge 
+  }
 
   return (
     <StyledTable>
@@ -64,7 +64,7 @@ const Home = () => {
             <TableCell>
               <Button variant="contained" style={{ marginRight: 10 }} component={Link} to={`/edit/${user._id}`}>Edit</Button>
               {/*Routing hum button ke sath nii krr sakte isliye humne component={Link } likh krr isko humne router component bna diya */}
-              <Button variant="contained" color="secondary">Delete</Button>
+              <Button variant="contained" color="secondary" onClick={() => deleteUserDetails(user._id)}>Delete</Button>
             </TableCell>
           </TableRow>
         ))}
