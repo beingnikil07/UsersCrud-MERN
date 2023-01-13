@@ -4,7 +4,8 @@ import {
   TableCell,
   TableHead,
   TableRow,
-  styled
+  styled,
+  Button
 } from "@mui/material";
 import { React, useEffect, useState } from "react";
 import { getUsers } from "../Services/api.js";
@@ -48,6 +49,7 @@ const Home = () => {
           <TableCell>User Name</TableCell>
           <TableCell>Email</TableCell>
           <TableCell>Phone</TableCell>
+          <TableCell></TableCell>    {/*Extra banayi kyuki ye jo extra space banegi idhar mai apne button rakhunga edit & delete */}
         </THead>
       </TableHead>
       <TableBody>
@@ -58,6 +60,10 @@ const Home = () => {
             <TableCell>{user.username}</TableCell>
             <TableCell>{user.email}</TableCell>
             <TableCell>{user.phone}</TableCell>
+            <TableCell>
+            <Button variant="contained" style={{marginRight:10}}>Edit</Button>
+            <Button variant="contained" color="secondary">Delete</Button>
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>
